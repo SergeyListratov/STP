@@ -67,3 +67,22 @@ with ZipFile('data.zip') as z:
 #     [print(i['first_name'], i['last_name'])
 #      for i in sorted(filter(lambda x: x['team'] == 'Arsenal', lst),
 #                      key=lambda x: (x['first_name'], x['last_name']))]
+
+#############
+#
+# import json as js
+#
+# with __import__('zipfile').ZipFile('data.zip') as zf:
+#     l = []
+#     for i in zf.infolist():
+#         if not i.is_dir() and i.filename.endswith('.json'):
+#             zf.extract(i)
+#             try:
+#                 with open(i.filename, encoding='utf-8') as file:
+#                     p = js.load(file)
+#                     if p['team'] == 'Arsenal':
+#                         l.append((p['first_name'], p['last_name']))
+#             except:
+#                 continue
+#
+# [print(*i) for i in sorted(l)]
