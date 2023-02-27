@@ -1,46 +1,43 @@
-# from zipfile import ZipFile
-# import json
-#
-#
-# def is_correct_json(st):
-#     try:
-#         d = json.load(st)
-#         return d
-#     except json.decoder.JSONDecodeError:
-#         pass
-#
-#
-# if __name__ == '__main__':
-#     play_list = []
-#     with ZipFile('data.zip', 'r') as zip_f:
-#         info = zip_f.namelist()
-#     with ZipFile('data.zip', 'r') as zip_j:
-#         for f in info:
-#             if f.split('/')[-1][-5:] == '.json':
-#                 zip_j.extract(f, '/home/sergey/Downloads/1/')
-#                 with open(f'/home/sergey/Downloads/1/{f}', 'r', encoding='UTF-8') as js:
-#                     try:
-#                         play_dict = is_correct_json(js)
-#                         if play_dict is not None and play_dict['team'] == 'Arsenal':
-#                             play_list.append((play_dict['first_name'], play_dict['last_name']))
-#                     except UnicodeDecodeError:
-#                         pass
-#         print(*map(lambda i: f'{i[0]} {i[1]}', sorted(play_list)), sep='\n')
-
 from zipfile import ZipFile
 import json
 
-def jsloads(z, n):
+
+def is_correct_json(st):
     try:
-        with z.open(n) as f:
-            return json.loads(f.read().decode('utf-8'))
+        d = json.load(st)
+        return d
+    except json.decoder.JSONDecodeError:
+        return {'team': ''}
+
+
+def is_correct_json_plus(zp, nm):
+    try:
+        with zp.open(nm) as f:
+            return json.loads(f.read().decode('UTF-8'))
     except:
         return {'team': ''}
 
-with ZipFile('data.zip') as z:
-    names = [n for n in z.namelist() if n[-5:] == '.json']
-    n = {i['first_name'] + ' ' + i['last_name'] for n in names for i in [jsloads(z, n)] if i['team'] == 'Arsenal'}
-    print(*sorted(n), sep='\n')
+
+if __name__ == '__main__':
+    with ZipFile('data.zip', 'r') as zip_f:
+        name_list = [name for name in zip_f.namelist() if name[-5:] == '.json']
+        play_list = [f'{i["first_name"]} {i["last_name"]}' for n in name_list for i in [is_correct_json_plus(zip_f, n)] if i['team'] == 'Arsenal' ]
+        print(*sorted(play_list), sep='\n')
+
+from zipfile import ZipFile
+# import json
+
+# def jsloads(z, n):
+#     try:
+#         with z.open(n) as f:
+#             return json.loads(f.read().decode('utf-8'))
+#     except:
+#         return {'team': ''}
+#
+# with ZipFile('data.zip') as z:
+#     names = [n for n in z.namelist() if n[-5:] == '.json']
+#     n = {i['first_name'] + ' ' + i['last_name'] for n in names for i in [jsloads(z, n)] if i['team'] == 'Arsenal'}
+#     print(*sorted(n), sep='\n')
 
 
 ######################################
