@@ -43,7 +43,7 @@ with ZipFile('data.zip') as z:
     print(*sorted(n), sep='\n')
 
 
-#####################################
+######################################
 # otvet=[]
 # with zp('data.zip') as zip_file:
 #     for i in zip_file.infolist():
