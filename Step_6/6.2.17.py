@@ -1,8 +1,7 @@
 import string
 
-# a, b = input(), input()
-
-aa = string.ascii_lowercase
-bb = list(map(int, range(len(aa))))
-cc = dict(zip(bb, aa))
-print(cc)
+bbb = string.ascii_lowercase
+cc = dict(zip(string.ascii_lowercase, input()))
+str = input()
+tbl = str.lower().maketrans(cc)
+print(str.lower().translate(tbl))
