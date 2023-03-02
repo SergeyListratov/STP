@@ -6,9 +6,10 @@ def my_foo():
 
 
 if __name__ == '__main__':
-    Point = namedtuple('Point', ['x', 'y'])
-    point = Point(3, 7)
-    print(point)
-    print(point.x, point.y)
-    print(type(point))
-    print(type(namedtuple('Point', ['x', 'y'])))
+    Game = namedtuple('Game', 'name developer publisher')
+
+    ExtendedGame = namedtuple('ExtendedGame', [*Game._fields, 'release_date', 'price'])
+
+    e = ExtendedGame(1, 2, 3, 4, 5)
+    print(ExtendedGame._fields)
+
