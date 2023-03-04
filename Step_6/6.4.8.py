@@ -1,15 +1,34 @@
-from collections import namedtuple
+from collections import OrderedDict
 
 
-def my_foo():
+def custom_sort(ordered_dict, by_values):
     pass
 
 
 if __name__ == '__main__':
-    Game = namedtuple('Game', 'name developer publisher')
+    data = OrderedDict(Dustin=29, Anabel=17, Brian=40, Carol=16)
+    custom_sort(data)
 
-    ExtendedGame = namedtuple('ExtendedGame', [*Game._fields, 'release_date', 'price'])
+    print(data)
 
-    e = ExtendedGame(1, 2, 3, 4, 5)
-    print(ExtendedGame._fields)
+
+
+
+
+    # data = OrderedDict({'Law & Order': 1990, 'The Practice': 1997, 'Six Feet Under': 2001, 'Joan of Arcadia': 2003,
+    #                     'The West Wing': 1999, 'Deadwood': 2004, 'The Sopranos': 1999, 'Boston Legal': 2004, 'ER': 1994,
+    #                     'Friday Night Lights': 2006, '24': 2001, 'Heroes': 2006, 'Lost': 2004, 'Dexter': 2006,
+    #                     'Damages': 2007, 'Big Love': 2006, 'House': 2004, 'Downton Abbey': 2010, "Grey's Anatomy": 2005,
+    #                     'Homeland': 2011, 'Breaking Bad': 2008, 'Game of Thrones': 2011,
+    #                     'CSI: Crime Scene Investigations': 2000, 'Boardwalk Empire': 2010, 'True Blood': 2008,
+    #                     'House of Cards': 2013, 'True Detective': 2014})
+
+    # data.sorted_keys = lambda reverse = False: sorted(data.keys(), reverse=1) if reverse == True else sorted(data.keys())
+    # data.sorted_values = lambda reverse = False: sorted(data.values(), reverse=1) if reverse == True else sorted(data.values())
+    #
+    # print(data.sorted_keys())
+    # print(data.sorted_values())
+
+
+
 
