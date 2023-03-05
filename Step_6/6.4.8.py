@@ -1,14 +1,20 @@
+import copy
 from collections import OrderedDict
 
 
-def custom_sort(ordered_dict, by_values):
-    pass
+def custom_sort(ordered_dict, by_values=False):
+    i = 0
+    if by_values:
+        i = 1
+    ordered_list = sorted(ordered_dict.items(), key=lambda v: v[i])
+    for i in ordered_list:
+        # ordered_dict.pop(i[0])
+        ordered_dict.move_to_end(i[0])
 
 
 if __name__ == '__main__':
     data = OrderedDict(Dustin=29, Anabel=17, Brian=40, Carol=16)
-    custom_sort(data)
-
+    custom_sort(data, by_values=True)
     print(data)
 
 
