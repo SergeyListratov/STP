@@ -12,7 +12,7 @@ toppings = {'сыр': 25, 'яйцо': 15, 'бекон': 30}
 # for i in st:
 #     total += mac_dict[i]
 # ln = len(str(total)) + 7
-# lens = len(max(st, key=lambda m: len(m)))
+# lens = len(max(st, key=len))
 # for k, v in Counter(sorted(st)).items():
 #     print(f'{k}{(lens - len(k)) * " "} x {v}')
 #     if ln < len(f'{k}{(lens - len(k)) * " "} x {v}'):
